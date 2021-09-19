@@ -48,6 +48,39 @@ $(document).ready(function() {
         loop: true
     });
 
+
+    function sendmail() {
+
+        let name = $('#name').val();
+        let email = $('#sender').val();
+        let phonenumber = $('#phonenumber').val();
+        let message = $('#message').val();
+    
+        let Body ='Name: '+name+'<br>Email:' +email+'<br>phonenumber: '+phonenumber+'<br>Message: '+message;
+    
+    }
+    
+    
+    Email.send({
+        Host: "smtp.gmail.com",
+        Username: "theislam00980@gmail.com",
+        Password: "zong4G(html)",
+        To: 'official00980@gmail.com',
+        From: "theislam00980@gmail.com",
+        Subject: "New mail on junnywithu site From: "+name,
+        Body : Body
+    }).then(
+        message =>{
+            if(message=='Ok'){
+                alert("Your message has been send.Thank you for connecting.");
+            }
+            else{
+                console.error(message);
+                alert("There is error at sending message.Please try again later.");
+            }
+        }
+    );
+
     // owl carousel script
     $('.carousel').owlCarousel({
         margin: 20,
@@ -71,35 +104,3 @@ $(document).ready(function() {
         }
     });
 });
-
-function sendmail() {
-
-    const name = $('#name').val();
-    const email = $('#sender').val();
-    const phonenumber = $('#phonenumber').val();
-    const message = $('#message').val();
-
-    const Body ='Name: '+name+'<br>Email:' +email+'<br>phonenumber: '+phonenumber+'<br>Message: '+message;
-
-}
-
-
-Email.send({
-    Host: "smtp.gmail.com",
-    Username: "theislam00980@gmail.com",
-    Password: "zong4G(html)",
-    To: 'official00980@gmail.com',
-    From: "theislam00980@gmail.com",
-    Subject: "New mail on junnywithu site From: "+name,
-    Body : Body
-}).then(
-    message =>{
-        if(message=='Ok'){
-            alert("Your message has been send.Thank you for connecting.");
-        }
-        else{
-            console.error(message);
-            alert("There is error at sending message.Please try again later.");
-        }
-    }
-);
