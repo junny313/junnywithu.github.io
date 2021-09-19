@@ -74,34 +74,29 @@ $(document).ready(function() {
 });
 
 
-function sendmail() {
+function sendmail(){
+var name = $("#Name").val();
+var email = $("#Email").val();
+var number = $("#number").val();
+var message = $("#message").val();
 
-    let name = $('#name').val();
-    let email = $('#sender').val();
-    let phonenumber = $('#phonenumber').val();
-    let message = $('#message').val();
+var mailbody = "Name : " + name + "<br>Email: " + email + "<br>Number: " + number + "<br>Message: " + message;
 
-    let Body ='Name: '+name+'<br>Email:' +email+'<br>phonenumber: '+phonenumber+'<br>Message: '+message;
-
-}
-
-
-Email.send({
-    Host: "smtp.gmail.com",
-    Username: "theislam00980@gmail.com",
-    Password: "zong4G(html)",
-    To: 'official00980@gmail.com',
-    From: "theislam00980@gmail.com",
-    Subject: "New mail on junnywithu site From: "+name,
-    Body : Body
-}).then(
-    message =>{
-        if(message=='Ok'){
-            alert("Your message has been send.Thank you for connecting.");
-        }
-        else{
+    Email.send({
+        SecureToken : " b16d56d6-f1c2-44ea-a3a4-293c92ac07a0",
+        To : 'official00980@gmail.com',
+        From : "theislam00980@gmail.com",
+        Subject : "New mail on junnywithu site From: "+name,
+        Body : mailbody
+    }).then(
+      message => {
+          if(message=="OK"){
+            alert("Thanks for connecting.");
+          }
+          else{
             console.error(message);
-            alert("There is error at sending message.Please try again later.");
-        }
-    }
-);
+            alert("also contact me on Whatsapp for Quick response.");
+          }
+      }
+    );
+}
