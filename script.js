@@ -74,29 +74,39 @@ $(document).ready(function() {
 });
 
 
+// smtp js section
 function sendmail(){
-var name = $("#Name").val();
-var email = $("#Email").val();
-var number = $("#number").val();
-var message = $("#message").val();
+    
+    var name = $('#Name').val();
+    var email = $('#Sender').val();
+    var number = $('#Number').val();
+var message = $('#Message').val();
 
-var mailbody = "Name : " + name + "<br>Email: " + email + "<br>Number: " + number + "<br>Message: " + message;
+   
+    var Body='Name: '+name+'<br>Email: '+email+'<br>Number: '+number+'<br>Message: '+message;
+    
 
     Email.send({
-        SecureToken : " b16d56d6-f1c2-44ea-a3a4-293c92ac07a0",
-        To : 'official00980@gmail.com',
-        From : "theislam00980@gmail.com",
-        Subject : "New mail on junnywithu site From: "+name,
-        Body : mailbody
+SecureToken:"fbf31702-bb7f-4a4e-9c1c-4ccf17ee777f",
+        To: 'official00980@gmail.com',
+        From: "theislam00980@gmail.com",
+        Subject: "New message on contact from "+name,
+        Body: Body
     }).then(
-      message => {
-          if(message=="OK"){
-            alert("Thanks for connecting.");
-          }
-          else{
-            console.error(message);
-            alert("also contact me on Whatsapp for Quick response.");
-          }
-      }
+        message =>{
+            console.log (message);
+            if(message=='OK'){
+            alert('Your Message has been send. Thank you for connecting.');
+            }
+            else{
+                console.error (message);
+                alert('There is error at sending message. ')
+                
+            }
+
+        }
     );
+
+
+
 }
